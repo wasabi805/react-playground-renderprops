@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
-interface IProps{
-    render?: ()=> void
+export interface IProps{
+    render?: (...args: any)=> void
 }
 
 class ButtonWrapper extends Component<IProps> {
@@ -15,7 +15,8 @@ class ButtonWrapper extends Component<IProps> {
   }
 
   render() {
-    return <button>1</button>
+    return <>{this.props?.render &&
+      this.props?.render(this.state.count, this.incrementCount)}</>
   }
 }
 
